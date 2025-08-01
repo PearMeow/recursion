@@ -31,27 +31,43 @@ function mergeSort(arr = []) {
     return res;
 }
 
-function fib(n = 0, memo = []) {
+function fibs(n = 0) {
+    if (n === 0) {
+        return [0];
+    } else if (n === 1) {
+        return [0, 1];
+    }
+    let res = [0, 1];
+    while (res.length !== n) {
+        res.push(res[res.length - 1] + res[res.length - 2]);
+    }
+    return res;
+}
+
+function fibsRec(n = 0, memo = []) {
     if (n < 0) {
         throw Error(
             "The fibonacci sequence is undefined for negative integers",
         );
     }
     if (memo[n] !== undefined) {
-        return memo[n];
+        return memo;
     } else if (n === 0) {
         memo[n] = 0;
-        return memo[n];
+        return memo;
     } else if (n === 1) {
+        memo[0] = 0;
         memo[n] = 1;
-        return memo[n];
+        return memo;
     }
-    memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
-    return memo[n];
+    memo[n] = fibsRec(n - 1, memo)[n - 1] + fibsRec(n - 2, memo)[n - 2];
+    return memo;
 }
 
 for (let i = 0; i < 20; ++i) {
-    console.log(fib(i));
+    console.log(fibsRec(i));
+    console.log(fibs(i));
 }
 
-console.log(mergeSort([3, 2, 1]));
+console.log(mergeSort([105, 79, 100, 110]));
+console.log(mergeSort([3, 2, 1, 13, 8, 5, 0, 1]));
