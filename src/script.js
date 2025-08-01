@@ -31,10 +31,15 @@ function mergeSort(arr = []) {
     return res;
 }
 
-function fibs(n = 0) {
-    if (n === 0) {
+function fibs(n = 1) {
+    if (n <= 0) {
+        throw Error(
+            "The fibonacci sequence is undefined for nonnegative integers",
+        );
+    }
+    if (n === 1) {
         return [0];
-    } else if (n === 1) {
+    } else if (n === 2) {
         return [0, 1];
     }
     let res = [0, 1];
@@ -44,27 +49,26 @@ function fibs(n = 0) {
     return res;
 }
 
-function fibsRec(n = 0, memo = []) {
-    if (n < 0) {
+function fibsRec(n = 1) {
+    if (n <= 0) {
         throw Error(
-            "The fibonacci sequence is undefined for negative integers",
+            "The fibonacci sequence is undefined for nonnegative integers",
         );
     }
-    if (memo[n] !== undefined) {
-        return memo;
-    } else if (n === 0) {
-        memo[n] = 0;
-        return memo;
-    } else if (n === 1) {
-        memo[0] = 0;
-        memo[n] = 1;
-        return memo;
+    let res = [];
+    if (n === 1) {
+        res = [0];
+        return res;
+    } else if (n === 2) {
+        res = [0, 1];
+        return res;
     }
-    memo[n] = fibsRec(n - 1, memo)[n - 1] + fibsRec(n - 2, memo)[n - 2];
-    return memo;
+    res = fibsRec(n - 1);
+    res.push(res[res.length - 1] + res[res.length - 2]);
+    return res;
 }
 
-for (let i = 0; i < 20; ++i) {
+for (let i = 1; i < 20; ++i) {
     console.log(fibsRec(i));
     console.log(fibs(i));
 }
