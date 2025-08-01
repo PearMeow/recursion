@@ -1,14 +1,7 @@
 {
   "name": "recursion",
   "version": "1.0.0",
-  "description": "<h1 align=\"center\">Template</h1> Template for projects",
-  "main": "webpack.common.js",
-  "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "dev": "webpack serve --config webpack.dev.js",
-    "deploy": "git subtree push --prefix dist origin gh-pages",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Recursion",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PearMeow/recursion.git"
