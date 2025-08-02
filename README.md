@@ -9,7 +9,7 @@ Features
 
 How to use this project
 -----------------------
-Clone the repository and run `node script.js`.
+Clone the repository and run `node recursion.js`.
 
 Credits
 -------
